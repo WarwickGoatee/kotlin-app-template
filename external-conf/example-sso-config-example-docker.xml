@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <httpbasic>
+    <allow>false</allow>
+  </httpbasic>
+  <mode>new</mode>
+
+  <origin>
+    <login>
+      <location>https://websignon.warwick.ac.uk/origin/hs</location>
+    </login>
+    <logout>
+      <location>https://websignon.warwick.ac.uk/origin/logout</location>
+    </logout>
+    <attributeauthority>
+      <location>https://websignon.warwick.ac.uk/origin/aa</location>
+    </attributeauthority>
+  </origin>
+
+  <shire>
+    <filteruserkey>SSO_USER</filteruserkey>
+    <uri-header>x-requested-uri</uri-header>
+    <location>https://localhost/sso/acs</location>
+    <sscookie>
+      <name>SSO-SSC-POST</name>
+      <path>/</path>
+      <domain>localhost</domain>
+      <secure>true</secure>
+    </sscookie>
+    <providerid>urn:localhost:example:service</providerid>
+  </shire>
+
+  <logout>
+    <location>https://localhost/sso/logout</location>
+  </logout>
+
+  <oauth>
+    <enabled>false</enabled>
+    <service>
+      <location>https://websignon.warwick.ac.uk/origin/oauth/service</location>
+    </service>
+  </oauth>
+
+  <credentials>
+    <certificate>file:/var/warwick/ssl/cert.pem</certificate>
+    <key>file:/var/warwick/ssl/privkey.pem</key>
+    <chain>file:/var/warwick/ssl/chain.pem</chain>
+  </credentials>
+
+  <trustedapps> <!-- dummy keys not trusted by anything -->
+    <publickey>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApgWT3OmIMviT3uXF1JkdNoXs8PerPY/RwuFGEARtMpAX+3CA3a8HZ+rn5Hom/f4E1jbXOvWQZdRHFZOL+WeIsWf6S9zeI4ht1A/iDVpcHC7dsSHSaRpXrZlJkEClN5SEIRtjbSviSntI638XPNN9r7PJP5KOm7dtnaZSV2gvHapUpjfIUQLaZ4mRJWL0qJ4BRhSQy+/lcsaKmFXs5UdIEGj4y+gwswlVGlPI3sVguoSo/vMApnwGaCb/G/Sj59baYuyFLGSbtyCBCpeR12wYr5FlOKxQkdxOX46KXvT+S1VTkgLfHzKMVhDoOOPAtSQsLXPHAlAnhLOMDx9apDu7HQIDAQAB</publickey>
+    <privatekey>MIIEowIBAAKCAQEApgWT3OmIMviT3uXF1JkdNoXs8PerPY/RwuFGEARtMpAX+3CA3a8HZ+rn5Hom/f4E1jbXOvWQZdRHFZOL+WeIsWf6S9zeI4ht1A/iDVpcHC7dsSHSaRpXrZlJkEClN5SEIRtjbSviSntI638XPNN9r7PJP5KOm7dtnaZSV2gvHapUpjfIUQLaZ4mRJWL0qJ4BRhSQy+/lcsaKmFXs5UdIEGj4y+gwswlVGlPI3sVguoSo/vMApnwGaCb/G/Sj59baYuyFLGSbtyCBCpeR12wYr5FlOKxQkdxOX46KXvT+S1VTkgLfHzKMVhDoOOPAtSQsLXPHAlAnhLOMDx9apDu7HQIDAQABAoIBABIHdwg9gCHw5rYFA9fTjN2X66Q7cSgtTx03s5EXufgMt94BWK06TbaWRvqD3WolxMayi+sGMdktFU8dh8zc1nZVkVPdt23qaermkqjakDgrSr3qq1volW7vv5JfwtFnWnXx8Hkxk9B81O1mDtL3MKX9AzTZKI12fPvqzPRbBwrUgKWg5URSjRbwHCOpYNRpGiloHHCgaxg5Wx6xCkA6eSz6/YSP8Ysr6hdftwoTTRPeu3o5hnX+W3h2MVA3sRxl2sjJUDex2kCMDmb6bAMBQgqCDjZC7H9cfbSG+0ebIw8cznRNu+KrDoNjZNNceA1rFO6cVdbQG4qBSNYh0rNh340CgYEA2i5xQNWicRnhpyYP+nzpFOcdAuqG6zEgK8MarpYdO0by+W5QDNsDwClvx+5YqHRpqilWjnN1TGPwK6vt5H1Qt7AbY3aIW59wOD8EkuLfehWrYR6JeFhzDQUc2bSPn3mwJlG73+C+b2ZOdgibePIbPJtDQaQmkZ8s+YWPqbOyOR8CgYEAwsycFpBIJxCJDIBCO8CEmEEaF1UF/2CINwxVAAj/DQ7zDEuFSa4sBkXSwlKTPQijoj+mtXsd+4+J9g/p7HvKeO6YjOa9yRa00YRJnfbXeM4NRQRVUcsXRtsoI1FIY/QlPw1on1U5jAhUnw1hcdCprJHR+Z5DZj//PX0guqToOEMCgYEAtsNEl1zdkARwI8YciGVuEdZvVOwETKuAGWh7x1dz8R3DlvGzGLG1+Jg9TKr5lVK+2I18NiO9VFo66zpAMrBOlzBsIOs/2hA6vsL7H9fv/6J7RwV/flIJPhTUUAGSdbJHvjGlQSpQG50FiJY5Nh0Id8JPmoLY1A8Ua4hYCX2/g10CgYB93UipR5ZnL0bt/d1N0EmcOsxJ8RTL+ippLx2oxSdO367o7c70WYZ2kxznlAUwtWlNR0VHE4K+7PLeO1ARDbc4RinpOJm92V8B1TDf0QNOOgzW4ELkc43ZqXcYwsc8Vh7Oy7Ii6SUitqs+jZ29tW48Y4fBeqHf6k/YAgZosm6dEwKBgAEqkFl7GeexvbA3LCt/jK0dpIC2wnbP2NYToTxdKnEIIFnulnPG/R3J1sIkKrqizx0QsSwf4cgiDBP8SZmV+/JiE2p4NIdy+juI3hmBRAjKZwFd/WYGWjnrP3E3xkaRXGNfn2s33rvFqxdzmPfzQgUERHbwoT6MFw8XWbYxJkA1</privatekey>
+  </trustedapps>
+
+  <masquerade>
+    <group>in-example-masqueraders</group>
+  </masquerade>
+</config>

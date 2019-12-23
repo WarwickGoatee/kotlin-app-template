@@ -1,0 +1,14 @@
+spring.resources.chain.strategy.content:
+  enabled: true
+  paths: /assets/**
+
+server:
+  forward-headers-strategy: native
+  port: 8080
+
+example.roles:
+  admin-webgroup: in-example-admin
+  sysadmin-webgroup: in-example-sysadmin
+  masqueraders-webgroup: in-example-masqueraders
+
+audit.application-key: example

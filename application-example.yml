@@ -1,0 +1,10 @@
+spring.datasource:
+  url: jdbc:postgresql://localhost:5432/example
+  username: ...
+  password: ...
+
+logging.level:
+  org.hibernate.SQL: DEBUG
+
+memcached.cache:
+  servers: 127.0.0.1:11211

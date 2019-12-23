@@ -1,0 +1,39 @@
+version: "3.3"
+services:
+  db:
+    image: "postgres:10-alpine"
+    container_name: example-db
+    environment:
+      - POSTGRES_USER=example
+      - POSTGRES_DB=example # to be explicit
+      - POSTGRES_PASSWORD=example
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+    networks:
+      - example
+  memcached:
+    image: "memcached:1.5-alpine"
+    container_name: example-memcached
+    networks:
+      - example
+  app:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    networks:
+      - example
+  proxy:
+    image: "abiosoft/caddy:1.0.3-no-stats"
+    volumes:
+      - "./Caddyfile:/etc/Caddyfile"
+    ports:
+      - "443:443"
+      - "80:80"
+    networks:
+      - example
+volumes:
+  postgresql:
+  postgresql_data:
+networks:
+  example:
