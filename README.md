@@ -21,3 +21,9 @@ managed by [Spring Security](https://spring.io/projects/spring-security).
 1. Copy `external-conf/example-sso-config-example.xml` to `external-conf/example-sso-config.xml` and add your own details
 1. Run `./gradlew bootRun` to install dependencies, build assets and compile and run the application
 1. Run `./gradlew test` to run the tests
+
+## Origin
+
+Most of the template has been extracted from CAMCAT (the Course and Module Catalogue), with the groundwork performed by Alec.
+
+Additions include GitHub CI, Docker and security headers.
