@@ -27,8 +27,8 @@ class SecurityContext(
 ) : WebSecurityConfigurerAdapter() {
   override fun configure(http: HttpSecurity?) {
     http
-      ?.addFilter(requestAttributeAuthenticationFilter())
-      ?.addFilterBefore(ssoClientFilter, requestAttributeAuthenticationFilter().javaClass)
+      ?.addFilter(preAuthenticatedProcessingFilter())
+      ?.addFilterBefore(ssoClientFilter, preAuthenticatedProcessingFilter().javaClass)
       ?.sessionManagement {
         it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
       }
@@ -47,10 +47,8 @@ class SecurityContext(
   }
 
   @Bean
-  fun requestAttributeAuthenticationFilter(): RequestAttributeAuthenticationFilter {
-    val filter = RequestAttributeAuthenticationFilter()
-    filter.setPrincipalEnvironmentVariable("${SSOClientFilter.USER_KEY}_usercode")
-    filter.setExceptionIfVariableMissing(false)
+  fun preAuthenticatedProcessingFilter(): WarwickPreAuthenticatedProcessingFilter {
+    val filter = WarwickPreAuthenticatedProcessingFilter()
     filter.setAuthenticationManager(authenticationManager)
     filter.setAuthenticationDetailsSource(::WarwickAuthenticationDetails)
     return filter
