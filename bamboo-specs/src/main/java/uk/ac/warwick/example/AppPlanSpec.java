@@ -95,8 +95,9 @@ public class AppPlanSpec extends AbstractWarwickBuildSpec {
     );
   }
 
-//  @Override
-//  protected Collection<Deployment> deployments() {
+  @Override
+  protected Collection<Deployment> deployments() {
+    return Collections.emptySet();
 //    return Collections.singleton(
 //      deployment(PROJECT, "ALL", "Example")
 //        .autoSpringBootEnvironment("Development", "example-dev.warwick.ac.uk", "example", "dev", SLACK_CHANNEL)
@@ -104,6 +105,6 @@ public class AppPlanSpec extends AbstractWarwickBuildSpec {
 //        .productionSpringBootEnvironment("Production", "example.warwick.ac.uk", "example", SLACK_CHANNEL)
 //        .build()
 //    );
-//  }
+  }
 
 }
