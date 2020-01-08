@@ -31,12 +31,12 @@ public class AppPlanSpec extends AbstractWarwickBuildSpec {
 
   private static final Project PROJECT =
     new Project()
-      .key("POST")
-      .name("Postroom");
+      .key("UTILS")
+      .name("Webdev Utils");
 
-  private static final String LINKED_REPOSITORY = "Postroom";
+  private static final String LINKED_REPOSITORY = "Kotlin App Template";
 
-  private static final String SLACK_CHANNEL = "#example";
+  private static final String SLACK_CHANNEL = "#kotlin";
 
   public static void main(String[] args) throws Exception {
     new AppPlanSpec().publish();
@@ -86,7 +86,7 @@ public class AppPlanSpec extends AbstractWarwickBuildSpec {
   @Override
   protected Collection<Plan> builds() {
     return Collections.singletonList(
-      build(PROJECT, "ALL", "Postroom")
+      build(PROJECT, "KAT", "Kotlin App Template")
         .linkedRepository(LINKED_REPOSITORY)
         .description("Run checks and build executable jar")
         .stage(buildStage())
@@ -95,15 +95,15 @@ public class AppPlanSpec extends AbstractWarwickBuildSpec {
     );
   }
 
-  @Override
-  protected Collection<Deployment> deployments() {
-    return Collections.singleton(
-      deployment(PROJECT, "ALL", "Post room")
-        .autoSpringBootEnvironment("Development", "example-dev.warwick.ac.uk", "example", "dev", SLACK_CHANNEL)
-        .autoSpringBootEnvironment("Test", "example-test.warwick.ac.uk", "example", "test", SLACK_CHANNEL)
-        .productionSpringBootEnvironment("Production", "example.warwick.ac.uk", "example", SLACK_CHANNEL)
-        .build()
-    );
-  }
+//  @Override
+//  protected Collection<Deployment> deployments() {
+//    return Collections.singleton(
+//      deployment(PROJECT, "ALL", "Example")
+//        .autoSpringBootEnvironment("Development", "example-dev.warwick.ac.uk", "example", "dev", SLACK_CHANNEL)
+//        .autoSpringBootEnvironment("Test", "example-test.warwick.ac.uk", "example", "test", SLACK_CHANNEL)
+//        .productionSpringBootEnvironment("Production", "example.warwick.ac.uk", "example", SLACK_CHANNEL)
+//        .build()
+//    );
+//  }
 
 }
